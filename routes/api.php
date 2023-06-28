@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});*/
+
+Route::get("/saludo",function(Request $request){
+    $message = ['mensaje' => "Hola Mundo !!!, desde la API Backend_ProjectFG"];
+    return response()->json($message);  /*Arreglo asociativo en php simil a objeto json*/
+
+});
+
+Route::post("/user",function(Request $request){
+    $message = ['mensaje' => "Hola Mundo !!!"];
+    return response()->json($message);  
 });
