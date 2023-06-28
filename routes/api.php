@@ -25,6 +25,28 @@ Route::get("/saludo",function(Request $request){
 });
 
 Route::post("/user",function(Request $request){
-    $message = ['mensaje' => "Hola Mundo !!!"];
+    $message = ['Usuario' => "Luis Gómez"];
+    return response()->json($message);  
+});
+
+Route::put("/customer",function(Request $request){
+    $message = ['Cliente' => "Juan Rios",
+        'Datos del cliente:'=>[
+        'Edad:'=>"35",
+        'Género'=>'M',
+        'Id'=>'CC',
+        'id_Número'=>'123456789',
+        'detalle de la compra:'=>['5000','10000','50000']]         /*sin coma el úlimo*/
+    ];
+    return response()->json($message);  
+});
+
+Route::patch("/customer2",function(Request $request){
+    $message = ['Cliente' => "Maria Sierra"];
+    return response()->json($message);  
+});
+
+Route::delete("/user2",function(Request $request){
+    $message = ['usuario' => "Pedro Pérez"];
     return response()->json($message);  
 });
