@@ -35,8 +35,45 @@ class UserController extends Controller
 
     }
 
-    public function update(){
-        return true;
+    public function update(Request $request){
+
+        $idUser = $request->query("id");
+
+        $user = new User();
+
+        $userIdent = $user->find($idUser);    
+           
+        
+         $userIdent -> name = $request->input("name");//nombre del campo como se va a enviar
+         $userIdent-> last_name = $request->input("last_name");
+         $userIdent-> phone = $request->input("phone");
+         $userIdent-> e_mail = $request->input("e_mail");
+         $userIdent-> user_name = $request->input("user_name");
+         $userIdent-> password = $request->input("password");
+
+         $userIdent -> save();
+
+         $message = [
+             "message"=>"Actualización Exitosa del Usuario",
+             "idUser" => $request->query("id"),
+             "nameUser" => $userIdent->name,
+             "last_nameUser" => $userIdent->last_name
+        
+         ];    
+
+         return $message;
+
+
+        // $updateUser = [
+        //     "name" => $request->input("name"),
+        //     "last_name" => $request->input("name"),
+        //     "phone" => $request->input("phone"),
+        //     "e_mail" => $request->input("e_mail"),
+        //     "user_name" => $request->input("user_name"),
+        //     "password" => $request->input("password"),
+        // ];   
+
+           
 
     }
     public function delete(){

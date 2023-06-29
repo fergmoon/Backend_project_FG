@@ -29,13 +29,39 @@ class CustomerController extends Controller
         
          $customer ->save();
 
-         $message=["message"=>"Registro Exitoso"];             
+         $message=["message"=>"Registro Exitoso de Cliente"];             
          return response()->json($message) ;
 
      }
 
-     public function update(){
-         return true;
+     public function update(Request $request){
+
+        $idCustomer = $request->query("id");
+
+        $customer = new Customer();
+
+        $customerIdent = $customer->find($idCustomer);    
+           
+        
+         $customerIdent -> name = $request->input("name");//nombre del campo como se va a enviar
+         $customerIdent-> last_name = $request->input("last_name");
+         $customerIdent-> type = $request->input("type", ['CC','NIT']);
+         $customerIdent-> id_number = $request->input("id_number");
+         $customerIdent-> company_name = $request->input("company_name");
+         $customerIdent-> city = $request->input("city");
+
+         $customerIdent -> save();
+
+         $message = [
+             "message"=>"Actualización Exitosa del Cliente",
+             "idCustomer" => $request->query("id"),
+             "nameCustomer" => $customerIdent->name,
+             "last_nameCustomer" => $customerIdent->last_name
+        
+         ];    
+
+         return $message;
+
 
      }
      public function delete(){

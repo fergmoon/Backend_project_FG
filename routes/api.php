@@ -40,6 +40,14 @@ Route::post("/customer",[CustomerController::class,'create']);
 
 
 
+//========METODO UPDATE=========//
+
+Route::put("/user",[UserController::class,'update']);
+
+Route::put("/customer",[CustomerController::class,'update']);
+
+
+
 
 
 
@@ -82,8 +90,8 @@ Route::post("/user1",function(Request $request){
     return response()->json($message);  
 });
 
-Route::put("/customer",function(Request $request){
-    $message = ['test_Cliente' => "Juan Rios",
+Route::put("/customer1",function(Request $request){
+    $message = ['test_Cliente1' => "Juan Rios",
         'Datos del cliente:'=>[
         'Edad:'=>"35",
         'Género'=>'M',
