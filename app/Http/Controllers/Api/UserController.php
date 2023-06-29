@@ -29,7 +29,7 @@ class UserController extends Controller
         
         $user ->save();
 
-        $message=["message"=>"Registro Exitoso"];             
+        $message=["message"=>"Registro Exitoso de Usuario"];             
         return response()->json($message) ;
         
 

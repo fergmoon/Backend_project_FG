@@ -77,13 +77,13 @@ Route::get("/saludo",function(Request $request){
 
 });
 
-Route::post("/user",function(Request $request){
-    $message = ['Usuario' => "Luis Gómez"];
+Route::post("/user1",function(Request $request){
+    $message = ['Test_Usuario1' => "Luis Gómez"];
     return response()->json($message);  
 });
 
 Route::put("/customer",function(Request $request){
-    $message = ['Cliente' => "Juan Rios",
+    $message = ['test_Cliente' => "Juan Rios",
         'Datos del cliente:'=>[
         'Edad:'=>"35",
         'Género'=>'M',
@@ -95,11 +95,11 @@ Route::put("/customer",function(Request $request){
 });
 
 Route::patch("/customer2",function(Request $request){
-    $message = ['Cliente' => "Maria Sierra"];
+    $message = ['Test_Cliente2' => "Maria Sierra"];
     return response()->json($message);  
 });
 
 Route::delete("/user2",function(Request $request){
-    $message = ['usuario' => "Pedro Pérez"];
+    $message = ['test_usuario2' => "Pedro Pérez"];
     return response()->json($message);  
 });
