@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CustomerController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,56 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 
+
+
+//========METODO READ=========//
+
+Route::get("/users",[UserController::class, 'read']);
+
+
+Route::get("/customers",[CustomerController::class,'read']);
+
+
+
+//========METODO CREATE=========//
+
+Route::post("/user",[UserController::class,'create']);
+
+Route::post("/customer",[CustomerController::class,'create']);
+
+
+
+
+
+
+
+//  Route::get("/customers",function(Request $request){
+
+//      $message = ['mensaje' => "Clientes"];
+
+//      return response()->json($message); 
+
+//  });
+
+
+
+
+// Route::get("/users",function(Request $request){
+
+//     $message = ['mensaje' => "Usuarios"];
+
+//     return response()->json($message); 
+
+
+// });
+
+
+
+
+
+
+
+//===============================================
 Route::get("/saludo",function(Request $request){
     $message = ['mensaje' => "Hola Mundo !!!, desde la API Backend_ProjectFG"];
     return response()->json($message);  /*Arreglo asociativo en php simil a objeto json*/
