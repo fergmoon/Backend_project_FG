@@ -68,6 +68,11 @@ Route::delete("/customer",[CustomerController::class,'delete']);
 
 
 
+
+
+
+
+
 //  Route::get("/customers",function(Request $request){
 
 //      $message = ['mensaje' => "Clientes"];
