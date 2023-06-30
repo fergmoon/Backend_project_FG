@@ -15,6 +15,7 @@ class UserController extends Controller
         return $data;
 
     }
+
     
     public function create(Request $request){
         
@@ -56,9 +57,9 @@ class UserController extends Controller
          $message = [
              "message"=>"Actualización Exitosa del Usuario",
              "idUser" => $request->query("id"),
-             "nameUser" => $userIdent->name,
-             "last_nameUser" => $userIdent->last_name
-        
+             "name_User" => $userIdent->name,
+             "last_name_User" => $userIdent->last_name
+                    
          ];    
 
          return $message;
@@ -76,8 +77,39 @@ class UserController extends Controller
            
 
     }
-    public function delete(){
-        return true;
+    public function delete(Request $request){
+
+        $idUser = $request ->query("id");
+
+        $user = new User();
+
+        $userIdent = $user -> find($idUser);
+
+        $userIdent -> delete();
+
+        $message = [
+            "message"=> "El usuario ha sido eliminado",
+            "id del usuario" => $request->query("id"),
+
+        ];
+
+        return $message;
+
+    }
+
+    public function read_one(Request $request){
+
+        $idUser = $request->query("id");
+
+        $user = new User();
+
+        $userIdent = $user->find($idUser); 
+
+        return $userIdent;
+
+ 
+
+
 
     }
 }

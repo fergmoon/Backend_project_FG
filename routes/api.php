@@ -32,6 +32,15 @@ Route::get("/customers",[CustomerController::class,'read']);
 
 
 
+
+//========METODO READ_ONE=========//
+
+Route::patch("/user",[UserController::class, 'read_one']);
+
+Route::patch("/customer",[CustomerController::class, 'read_one']);
+
+
+
 //========METODO CREATE=========//
 
 Route::post("/user",[UserController::class,'create']);
@@ -45,6 +54,13 @@ Route::post("/customer",[CustomerController::class,'create']);
 Route::put("/user",[UserController::class,'update']);
 
 Route::put("/customer",[CustomerController::class,'update']);
+
+
+//========METODO DELETE=========//
+
+Route::delete("/user",[UserController::class,'delete']);
+
+Route::delete("/customer",[CustomerController::class,'delete']);
 
 
 

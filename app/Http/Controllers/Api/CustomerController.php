@@ -55,18 +55,48 @@ class CustomerController extends Controller
          $message = [
              "message"=>"Actualización Exitosa del Cliente",
              "idCustomer" => $request->query("id"),
-             "nameCustomer" => $customerIdent->name,
-             "last_nameCustomer" => $customerIdent->last_name
+             "name_Customer" => $customerIdent->name,
+             "last_name_Customer" => $customerIdent->last_name
         
          ];    
 
          return $message;
 
+        }
+
+         public function delete(Request $request){
+
+            $idCustomer = $request ->query("id");
+    
+            $customer = new Customer();
+    
+            $customerIdent = $customer -> find($idCustomer);
+    
+            $customerIdent -> delete();
+    
+            $message = [
+                "message"=> "El cliente ha sido eliminado",
+                "id del cliente" => $request->query("id"),
+    
+            ];
+    
+            return $message;
+    
+        }
+
+     
+     public function read_one(Request $request){
+
+        $idCustomer = $request->query("id");
+
+        $customer = new Customer();
+
+        $customerIdent = $customer->find($idCustomer); 
+
+        return $customerIdent;
+
 
      }
-     public function delete(){
-         return true;
 
-     }
 }
 
