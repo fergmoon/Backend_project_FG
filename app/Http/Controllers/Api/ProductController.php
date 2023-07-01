@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
-    public function read()
+    public function read()  //Puede ser eliminado y dejar solo 2OP
     {
-        $products = new Product();  //Puede ser eliminado y dejar solo 2OP
+        $products = new Product();  
         $data = $products->all();
         return $data;
     }
@@ -29,7 +30,7 @@ class ProductController extends Controller
     $product-> save();
 
     $message = ["Mensaje"=> "registro exitoso de Producto",];
-        return response()->json($message);
+        return response()->json($message,200);
 
     }
 
@@ -54,7 +55,7 @@ class ProductController extends Controller
             "id del Producto"=>$request->query("id"),            
         ];
 
-        return $message;
+        return response($message,Response::HTTP_CREATED);
     }
 
     public function delete(Request $request)
@@ -101,7 +102,7 @@ class ProductController extends Controller
             $product = $productSingle->all();
         }
         
-        return response()->json($product);
+        return response()->json($product, 201 );
 
     }
 

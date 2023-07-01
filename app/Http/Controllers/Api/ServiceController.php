@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use Illuminate\Http\Response;
 
 class ServiceController extends Controller
 {
@@ -29,7 +30,7 @@ class ServiceController extends Controller
         $service->save();
 
         $message = ["message"=>"Registro exitoso del servicio"];
-        return response()->json($message);   
+        return response()->json($message, Response::HTTP_CREATED);   
     }
 
     public function update(Request $request)
@@ -54,7 +55,8 @@ class ServiceController extends Controller
             "Tipo de servicio actual"=>$serviceIdent->type
         ];
 
-        return $message;
+        return response($message,200);
+
     }
 
     public function delete (Request $request)
@@ -99,7 +101,8 @@ class ServiceController extends Controller
             $service = $serviceSingle->all();
         }
         
-        return response()->json($service);
+        return response()->json($service,Response::HTTP_CREATED);
+        // return response()->json($service,Response::201);
 
     }
 }

@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;  /*se debe importar el modelo*/
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
 
-    public function read()
+    public function read() //Puede ser eliminado y dejar solo 2OP
     {
         $users = new User();
         $data = $users->all();
@@ -32,7 +33,7 @@ class UserController extends Controller
         $user->save();
 
         $message = ["message" => "Registro Exitoso de Usuario"];
-        return response()->json($message);
+        return response()->json($message,200);
     }
 
     public function update(Request $request)
@@ -62,7 +63,7 @@ class UserController extends Controller
 
         ];
 
-        return $message;
+        return response($message,Response::HTTP_CREATED);
 
 
         // $updateUser = [
@@ -121,7 +122,7 @@ class UserController extends Controller
             $user = $userSingle->all();
         }
         
-        return response()->json($user);
+        return response()->json($user,Response::HTTP_CREATED);
 
     }
 }

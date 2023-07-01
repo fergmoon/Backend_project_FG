@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;  /*se debe importar el modelo*/
+use Illuminate\Http\Response;
 
 class CustomerController extends Controller
 {
@@ -30,7 +31,7 @@ class CustomerController extends Controller
          $customer ->save();
 
          $message=["message"=>"Registro Exitoso de Cliente"];             
-         return response()->json($message) ;
+         return response()->json($message, 200) ;
 
      }
 
@@ -60,7 +61,7 @@ class CustomerController extends Controller
         
          ];    
 
-         return $message;
+         return response($message,Response::HTTP_CREATED);
 
         }
 
@@ -110,7 +111,7 @@ class CustomerController extends Controller
              $customer = $customerSingle->all();
          }
          
-         return response()->json($customer);
+         return response()->json($customer,Response::HTTP_CREATED);
  
      }
 
