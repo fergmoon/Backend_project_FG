@@ -7,62 +7,62 @@ use Illuminate\Http\Request;
 use App\Models\User;  /*se debe importar el modelo*/
 
 class UserController extends Controller
-{    
+{
 
-    public function read(){
+    public function read()
+    {
         $users = new User();
-        $data = $users -> all();
+        $data = $users->all();
         return $data;
-
     }
 
-    
-    public function create(Request $request){
-        
+
+    public function create(Request $request)
+    {
+
         $user = new User();
 
-        $user -> name = $request -> input ("name");//nombre del campo como se va a enviar
-        $user -> last_name = $request -> input("last_name");
-        $user -> phone = $request -> input("phone");
-        $user -> e_mail = $request -> input("e_mail");
-        $user -> user_name = $request -> input("user_name");
-        $user -> password = $request -> input("password");
-        
-        $user ->save();
+        $user->name = $request->input("name"); //nombre del campo como se va a enviar
+        $user->last_name = $request->input("last_name");
+        $user->phone = $request->input("phone");
+        $user->e_mail = $request->input("e_mail");
+        $user->user_name = $request->input("user_name");
+        $user->password = $request->input("password");
 
-        $message=["message"=>"Registro Exitoso de Usuario"];             
-        return response()->json($message) ;
-        
+        $user->save();
 
+        $message = ["message" => "Registro Exitoso de Usuario"];
+        return response()->json($message);
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
         $idUser = $request->query("id");
 
         $user = new User();
 
-        $userIdent = $user->find($idUser);    
-           
-        
-         $userIdent -> name = $request->input("name");//nombre del campo como se va a enviar
-         $userIdent-> last_name = $request->input("last_name");
-         $userIdent-> phone = $request->input("phone");
-         $userIdent-> e_mail = $request->input("e_mail");
-         $userIdent-> user_name = $request->input("user_name");
-         $userIdent-> password = $request->input("password");
+        $userIdent = $user->find($idUser);
 
-         $userIdent -> save();
 
-         $message = [
-             "message"=>"Actualización Exitosa del Usuario",
-             "idUser" => $request->query("id"),
-             "name_User" => $userIdent->name,
-             "last_name_User" => $userIdent->last_name
-                    
-         ];    
+        $userIdent->name = $request->input("name"); //nombre del campo como se va a enviar
+        $userIdent->last_name = $request->input("last_name");
+        $userIdent->phone = $request->input("phone");
+        $userIdent->e_mail = $request->input("e_mail");
+        $userIdent->user_name = $request->input("user_name");
+        $userIdent->password = $request->input("password");
 
-         return $message;
+        $userIdent->save();
+
+        $message = [
+            "message" => "Actualización Exitosa del Usuario",
+            "idUser" => $request->query("id"),
+            "name_User" => $userIdent->name,
+            "last_name_User" => $userIdent->last_name
+
+        ];
+
+        return $message;
 
 
         // $updateUser = [
@@ -74,42 +74,38 @@ class UserController extends Controller
         //     "password" => $request->input("password"),
         // ];   
 
-           
+
 
     }
-    public function delete(Request $request){
-
-        $idUser = $request ->query("id");
-
-        $user = new User();
-
-        $userIdent = $user -> find($idUser);
-
-        $userIdent -> delete();
-
-        $message = [
-            "message"=> "El usuario ha sido eliminado",
-            "id del usuario" => $request->query("id"),
-
-        ];
-
-        return $message;
-
-    }
-
-    public function read_one(Request $request){
+    public function delete(Request $request)
+    {
 
         $idUser = $request->query("id");
 
         $user = new User();
 
-        $userIdent = $user->find($idUser); 
+        $userIdent = $user->find($idUser);
+
+        $userIdent->delete();
+
+        $message = [
+            "message" => "El usuario ha sido eliminado",
+            "id del usuario" => $request->query("id"),
+
+        ];
+
+        return $message;
+    }
+
+    public function read_one(Request $request)
+    {
+
+        $idUser = $request->query("id");
+
+        $user = new User();
+
+        $userIdent = $user->find($idUser);
 
         return $userIdent;
-
- 
-
-
-
     }
 }
