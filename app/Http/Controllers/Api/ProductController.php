@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function read()
     {
-        $products = new Product();
+        $products = new Product();  //Puede ser eliminado y dejar solo 2OP
         $data = $products->all();
         return $data;
     }
@@ -88,6 +88,22 @@ class ProductController extends Controller
         return $productIdent;
     }
 
+
+    public function read_2OP(Request $request)
+    {
+        $productSingle = new Product();
+
+        if ($request->query("id")){
+
+            $product = $productSingle->find($request->query("id"));
+
+        }else{
+            $product = $productSingle->all();
+        }
+        
+        return response()->json($product);
+
+    }
 
 
 

@@ -9,7 +9,7 @@ use App\Models\Service;
 class ServiceController extends Controller
 {
 
-    public function read()
+    public function read() //Puede ser eliminado y dejar solo 2OP
     {
         $services = new Service();
         $data = $services->all();
@@ -84,6 +84,22 @@ class ServiceController extends Controller
         $serviceIdent = $service->find($idService);
 
         return $serviceIdent;
+
+    }
+
+    public function read_2OP(Request $request)
+    {
+        $serviceSingle = new Service();
+
+        if ($request->query("id")){
+
+            $service = $serviceSingle->find($request->query("id"));
+
+        }else{
+            $service = $serviceSingle->all();
+        }
+        
+        return response()->json($service);
 
     }
 }

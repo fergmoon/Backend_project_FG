@@ -54,6 +54,17 @@ Route::patch("/service",[ServiceController::class, 'read_one']);
 Route::patch("/product",[ProductController::class, 'read_one']);
 
 
+//========METODO READ_2OP DOBLE OPCION=========//
+
+Route::get("/user",[UserController::class, 'read_2OP']);
+
+Route::get("/customer",[CustomerController::class, 'read_2OP']);
+
+Route::get("/service",[ServiceController::class, 'read_2OP']);
+
+Route::get("/product",[ProductController::class, 'read_2OP']);
+
+
 
 //========METODO CREATE=========//
 

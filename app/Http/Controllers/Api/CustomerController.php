@@ -9,7 +9,7 @@ use App\Models\Customer;  /*se debe importar el modelo*/
 class CustomerController extends Controller
 {
 
-    public function read(){
+    public function read(){  //Puede ser eliminado y dejar solo 2OP
         $customers = new Customer();
         $data = $customers -> all();
         return $data;
@@ -97,6 +97,24 @@ class CustomerController extends Controller
 
 
      }
+
+     public function read_2OP(Request $request)
+     {
+         $customerSingle = new Customer();
+ 
+         if ($request->query("id")){
+ 
+             $customer = $customerSingle->find($request->query("id"));
+ 
+         }else{
+             $customer = $customerSingle->all();
+         }
+         
+         return response()->json($customer);
+ 
+     }
+
+     
 
 }
 

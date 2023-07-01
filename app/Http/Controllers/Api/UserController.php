@@ -108,4 +108,20 @@ class UserController extends Controller
 
         return $userIdent;
     }
+
+    public function read_2OP(Request $request)
+    {
+        $userSingle = new User();
+
+        if ($request->query("id")){
+
+            $user = $userSingle->find($request->query("id"));
+
+        }else{
+            $user = $userSingle->all();
+        }
+        
+        return response()->json($user);
+
+    }
 }
