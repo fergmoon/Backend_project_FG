@@ -55,8 +55,39 @@ class ProductController extends Controller
         ];
 
         return $message;
-
     }
+
+    public function delete(Request $request)
+
+    {
+        $idProduct = $request->query("id");
+
+        $product = new Product();
+
+        $productIdent = $product->find($idProduct);
+
+        $productIdent->delete();
+
+        $message = [
+            "Mensaje"=> "El producto ha sido eliminado",
+            "Id del Producto"=>$request->query("id"),
+        ];
+
+        return $message;
+    }
+
+    public function read_one(Request $request)
+
+    {
+        $idProduct = $request->query("id");
+
+        $product = new Product();
+
+        $productIdent = $product->find($idProduct);
+
+        return $productIdent;
+    }
+
 
 
 
