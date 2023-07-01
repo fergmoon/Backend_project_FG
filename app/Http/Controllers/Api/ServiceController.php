@@ -40,11 +40,11 @@ class ServiceController extends Controller
 
         $serviceIdent = $service->find($idService);
 
-        $serviceIdent->name = $request->input("quantity"); //nombre del campo como se va a enviar
-        $serviceIdent->last_name = $request->input("type");
-        $serviceIdent->phone = $request->input("unit_value");
-        $serviceIdent->e_mail = $request->input("total_value");
-        $serviceIdent->user_name = $request->input("customer");        
+        $serviceIdent->quantity = $request->input("quantity"); //nombre del campo como se va a enviar
+        $serviceIdent->type = $request->input("type");
+        $serviceIdent->unit_value = $request->input("unit_value");
+        $serviceIdent->total_value = $request->input("total_value");
+        $serviceIdent->customer = $request->input("customer");        
 
         $serviceIdent->save();
 
