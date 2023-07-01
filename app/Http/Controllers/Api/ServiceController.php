@@ -28,7 +28,7 @@ class ServiceController extends Controller
 
         $service->save();
 
-        $message = ["message"=>"Registro exitoso tipo servicio"];
+        $message = ["message"=>"Registro exitoso del servicio"];
         return response()->json($message);   
     }
 
@@ -51,7 +51,6 @@ class ServiceController extends Controller
         $message = [
             "Mensaje"=> "Actualización Exitosa Tipo de Servicio",
             "id del Servicio" => $request->query("id"),
-            "Tipo de servicio inicial"=>$service->type,
             "Tipo de servicio actual"=>$serviceIdent->type
         ];
 
