@@ -51,13 +51,21 @@ class UserController extends Controller
         $user->user_name = $request->input("user_name");
         $user->password = $request->input("password");
 
-        $user->save();
+        $user->save();  
+        
+        // Obtener todos los datos del usuario actualizado
+        $updatedUser = $user->find($idUser);
 
         $message = [
             "message" => "Actualización Exitosa del Usuario",
-            "idUser" => $request->query("id"),
-            "name_User" => $user->name,
-            "last_name_User" => $user->last_name
+            "user"=>$updatedUser,
+
+            // "idUser" => $request->query("id"),
+            // "name_User" => $user->name,
+            // "last_name_User" => $user->last_name,
+            // "e_mail" => $user -> e_mail,
+            // "user_name" => $user -> user_name,
+            // "password" => $user -> password,            
 
         ];
 
