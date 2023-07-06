@@ -41,43 +41,30 @@ class UserController extends Controller
 
         $idUser = $request->query("id");
 
-        $user = new User();
-
-        $userIdent = $user->find($idUser);
+        $user = User::find($idUser);
 
 
-        $userIdent->name = $request->input("name"); //nombre del campo como se va a enviar
-        $userIdent->last_name = $request->input("last_name");
-        $userIdent->phone = $request->input("phone");
-        $userIdent->e_mail = $request->input("e_mail");
-        $userIdent->user_name = $request->input("user_name");
-        $userIdent->password = $request->input("password");
+        $user->name = $request->input("name"); //nombre del campo como se va a enviar
+        $user->last_name = $request->input("last_name");
+        $user->phone = $request->input("phone");
+        $user->e_mail = $request->input("e_mail");
+        $user->user_name = $request->input("user_name");
+        $user->password = $request->input("password");
 
-        $userIdent->save();
+        $user->save();
 
         $message = [
             "message" => "Actualización Exitosa del Usuario",
             "idUser" => $request->query("id"),
-            "name_User" => $userIdent->name,
-            "last_name_User" => $userIdent->last_name
+            "name_User" => $user->name,
+            "last_name_User" => $user->last_name
 
         ];
 
         return response($message,Response::HTTP_CREATED);
 
-
-        // $updateUser = [
-        //     "name" => $request->input("name"),
-        //     "last_name" => $request->input("name"),
-        //     "phone" => $request->input("phone"),
-        //     "e_mail" => $request->input("e_mail"),
-        //     "user_name" => $request->input("user_name"),
-        //     "password" => $request->input("password"),
-        // ];   
-
-
-
     }
+    
     public function delete(Request $request)
     {
 
