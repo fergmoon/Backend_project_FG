@@ -102,6 +102,10 @@ class UserController extends Controller
 
         $userIdent = $user->find($idUser);
 
+        if(!$userIdent){
+            return response()->json(["error" => "El registro no existe"], Response::HTTP_NOT_FOUND);
+        }
+
         return $userIdent;
     }
 
@@ -110,9 +114,11 @@ class UserController extends Controller
         $userSingle = new User();
 
         if ($request->query("id")){
-
             $user = $userSingle->find($request->query("id"));
 
+            if(!$user){
+                return response()->json(["error" => "El registro no existe"], Response::HTTP_NOT_FOUND);
+            }
         }else{
             $user = $userSingle->all();
         }
